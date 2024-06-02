@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "codingverse.com": {
+    "CodeCraft": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/codingverse.com",
+            "outputPath": "dist/code-craft",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -21,28 +21,40 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "assets/css/plugins/bootstrap-grid.css",
+              "assets/css/plugins/fancybox.min.css",
+              "assets/css/plugins/swiper.min.css",
+              "assets/css/plugins/bootstrap-grid.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/plugins/jquery.min.js",
+              "src/assets/js/plugins/swup.min.js",
+              "src/assets/js/plugins/swiper.min.js",
+              "src/assets/js/plugins/fancybox.min.js",
+              "src/assets/js/plugins/gsap.min.js",
+              "src/assets/js/plugins/smooth-scroll.js",
+              "src/assets/js/plugins/ScrollTrigger.min.js",
+              "src/assets/js/plugins/ScrollTo.min.js"
+
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "outputHashing": "all"
@@ -59,16 +71,19 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "codingverse.com:build:production"
+              "buildTarget": "CodeCraft:build:production"
             },
             "development": {
-              "buildTarget": "codingverse.com:build:development"
+              "buildTarget": "CodeCraft:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "CodeCraft:build"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -79,10 +94,8 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
@@ -92,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
